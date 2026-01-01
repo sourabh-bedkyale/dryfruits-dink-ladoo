@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dryfruits Dink Ladoo - घरगुती डिंकाचे लाडू</title>
+    <style>
+        body { font-family: Arial; margin: 0; padding: 10px; background: #f8f4e6; color: #333; }
+        .header { text-align: center; background: #d4a574; color: white; padding: 20px; border-radius: 10px; }
+        .logo { font-size: 2em; margin: 0; }
+        .product-img { width: 100%; max-width: 400px; border-radius: 10px; }
+        .price { font-size: 1.5em; color: #b8860b; font-weight: bold; }
+        .quantity { margin: 20px 0; }
+        select, input { padding: 10px; font-size: 1.2em; border-radius: 5px; border: 1px solid #ccc; }
+        .btn { display: block; width: 90%; margin: 15px auto; padding: 15px; font-size: 1.3em; border: none; border-radius: 10px; color: white; text-decoration: none; text-align: center; }
+        .whatsapp { background: #25D366; }
+        .upi { background: #00A651; }
+        .features { background: #fff3cd; padding: 15px; border-radius: 10px; margin: 20px 0; }
+        .reviews { background: #e8f5e8; padding: 15px; border-radius: 10px; }
+        ul { padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo">🌼 Dryfruits Dink Ladoo 🌼</h1>
+        <p>🍯 शुद्ध सेंद्रिय गुळापासून तयार 🍯</p>
+    </div>
+
+    <img src="ladoo.jpg" alt="डिंक लाडू इमेज" class="product-img">
+
+    <div class="features">
+        <h2>✨ खास वैशिष्ट्ये</h2>
+        <ul>
+            <li>🧈 शुद्ध देशी तूप</li>
+            <li>🌰 निवडक डिंक + बदाम, काजू</li>
+            <li>🍯 सेंद्रिय गूळ</li>
+            <li>👶 प्रसूतीनंतर महिलांसाठी</li>
+            <li>❄️ हिवाळ्यात उष्णता देणारे</li>
+        </ul>
+    </div>
+
+    <div class="quantity">
+        <label>प्रमाण निवडा:</label><br>
+        <select id="quantity">
+            <option value="1">1 Kg</option>
+            <option value="2">2 Kg</option>
+            <option value="3">3 Kg</option>
+            <option value="4">4 Kg</option>
+            <option value="5">5 Kg</option>
+        </select>
+    </div>
+
+    <div class="price" id="totalPrice">एकूण किंमत: ₹700 (1 Kg)</div>
+
+    <a href="#" id="whatsappBtn" class="btn whatsapp">📱 WhatsApp वर ऑर्डर (9146870514)</a>
+    <a href="#" id="upiBtn" class="btn upi">💳 UPI ने पेमेंट (sourabhbedkyale1827@okicici)</a>
+
+    <div class="reviews">
+        <h3>⭐ ग्राहकांच्या प्रतिक्रिया</h3>
+        <p>"खूप चांगले लाडू! चव अप्रतिम." - राधा जी</p>
+        <p>"डिलिव्हरी पटकन आणि पॅकिंग छान." - संजय भाई</p>
+    </div>
+
+    <script>
+        const qty = document.getElementById('quantity');
+        const price = document.getElementById('totalPrice');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const upiBtn = document.getElementById('upiBtn');
+
+        qty.addEventListener('change', function() {
+            const kg = this.value;
+            const total = 700 * kg;
+            price.textContent = `एकूण किंमत: ₹${total} (${kg} Kg)`;
+            updateButtons(kg);
+        });
+
+        function updateButtons(kg) {
+            const msg = `नमस्कार, मला Dryfruits Dink Ladoo ${kg} Kg ची ऑर्डर करायची आहे. एकूण ₹${700*kg}.`;
+            whatsappBtn.href = `https://wa.me/919146870514?text=${encodeURIComponent(msg)}`;
+
+            const upiMsg = `Dryfruits Dink Ladoo ${kg} Kg - ₹${700*kg}`;
+            upiBtn.href = `upi://pay?pa=sourabhbedkyale1827@okicici&pn=Sourabh Bedkyale&am=${700*kg}&tn=${encodeURIComponent(upiMsg)}`;
+        }
+
+        updateButtons(1); // Default
+    </script>
+</body>
+</html>
